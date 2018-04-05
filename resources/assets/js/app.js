@@ -15,6 +15,8 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+const axios = require('axios');
+
 Vue.component('contacts', require('./components/Contacts.vue'));
 
 const app = new Vue({

@@ -44,11 +44,35 @@
         },
         mounted: function() {
             console.log('Contacts component loaded...');
+            this.fetchContactList();
         },
         methods: {
+            fetchContactList: function() {
+                console.log('Fetching Contacts');
+                axios.get('api/contacts')
+                    .then((response) => {
+                        console.log(response.data);
+                        this.list = response.data;
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            },
             createContact: function() {
                 console.log('Creating Contact');
-                return;
+                let self = this;
+                let params = Object.assign({}, self.contact);
+                axios.post('api/contact/store', params)
+                    .then(function() {
+                        self.contact.name = '';
+                        self.contact.email = '';
+                        self.contact.phone = '';
+                        self.edit = false;
+                        self.fetchContactList();
+                    })
+                    .catch(function(error) {
+                        console.log(error);
+                    });
             },
             updateContact: function(id) {
                 console.log('Updating Contact '+id);
