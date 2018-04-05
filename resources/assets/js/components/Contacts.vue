@@ -113,6 +113,15 @@
                     .catch(function(error) {
                         console.log(error);
                     });
+            },
+            deleteContact: function(id) {
+                let self = this;
+                axios.delete('api/contact/'+id)
+                    .then(function(response) {
+                        self.fetchContactList();
+                    }).catch(function(error) {
+                        console.log(error);
+                    });
             }
         }
     }
