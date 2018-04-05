@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/css/app.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container mt-4">
         <div id="app">
             <contacts></contacts>
 
